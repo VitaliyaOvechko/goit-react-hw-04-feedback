@@ -11,16 +11,14 @@ const App = () => {
   const [bad, setBad] = useState(0);
 
   const handleBtnClick = value => {
-    console.log(value);
-
     switch (value) {
-      case good:
+      case 'good':
         setGood(prevState => prevState + 1);
         break;
-      case neutral:
+      case 'neutral':
         setNeutral(prevState => prevState + 1);
         break;
-      case bad:
+      case 'bad':
         setBad(prevState => prevState + 1);
         break;
 
@@ -34,9 +32,8 @@ const App = () => {
     return totalFeedback;
   };
 
-  const countPositiveFeedbackPercentage = () => {
+  const countPositiveFeedbackPercentage = () =>
     Math.round((good / countTotalFeedback()) * 100);
-  };
 
   return (
     <div>
@@ -44,9 +41,8 @@ const App = () => {
         <FeedbackOptions
           options={{ good, neutral, bad }}
           onLeaveFeedback={handleBtnClick}
-        ></FeedbackOptions>
+        />
       </Section>
-
       <Section title="Statistics">
         {countTotalFeedback() > 0 ? (
           <Statistics
